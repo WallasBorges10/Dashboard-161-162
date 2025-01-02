@@ -13,6 +13,9 @@ url = 'https://github.com/WallasBorges10/Dashboard-161-162/raw/refs/heads/main/b
 # Nome do arquivo para salvar temporariamente
 file_path = 'base_consolidada_cnt.xlsx'
 
+# guiunicorn
+server = app.server
+
 # Baixar o arquivo usando requests
 response = requests.get(url)
 with open(file_path, 'wb') as file:
