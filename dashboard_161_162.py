@@ -4,17 +4,14 @@ from dash import Dash, dcc, html, Input, Output
 import plotly.express as px
 import socket
 import requests
-# Carregar a base consolidada
-
+from dash import Dash
+import dash_html_components as html
 
 # URL do arquivo no GitHub
 url = 'https://github.com/WallasBorges10/Dashboard-161-162/raw/refs/heads/main/base_consolidada_cnt.xlsx'
 
 # Nome do arquivo para salvar temporariamente
 file_path = 'base_consolidada_cnt.xlsx'
-
-# guiunicorn
-server = app.server
 
 # Baixar o arquivo usando requests
 response = requests.get(url)
@@ -93,6 +90,7 @@ def find_free_port(default_port=8050):
 
 # Inicializar o Dash App
 app = Dash(__name__)
+server = app.server  # Objeto WSGI que o Gunicorn usará
 
 app.layout = html.Div([
     html.H1("Dashboard - Pesquisa CNT"),
@@ -238,7 +236,5 @@ def update_graph(selected_genders, selected_ages, selected_education, selected_r
 
     return fig_gov, fig_personal, fig_emp, fig_health, fig_edu, fig_sec, fig_inc
 
-
-if __name__ == '__main__':
-    port = find_free_port()
-    app.run(host='127.0.0.1', port=port, debug=True)
+if __name__ == "__main__":
+    app.run_server(debug=True)
