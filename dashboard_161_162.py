@@ -152,7 +152,7 @@ app.layout = html.Div([
 
     html.Div([
         dcc.Graph(id='income_expectation_graph')
-    ], style={'width': '40%', 'margin': 'auto'})
+    ], style={'width': '60%', 'margin': 'auto'})
 ])
 
 
